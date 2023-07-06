@@ -1,0 +1,116 @@
+ <!-- <div fxLayout="row row-wrap"
+fxLayoutAlign="start start"
+class="style"
+   *ngIf="!dservice.isUserLoggedIn">
+    <br />
+    <br />
+    <div
+      fxLayout="column"
+      style="width: 400px; margin: 0 auto; text-align: center"
+    >
+      <div style="text-align: center">
+        <img
+          src="https://us.123rf.com/450wm/sanek13744/sanek137442105/sanek13744210500044/169424225-wishlist-icon-in-comic-style-like-document-cartoon-vector-illustration-on-white-isolated-background-.jpg?ver=6"
+          style="width: 240px"
+        />
+      </div>
+      <h1>PLEASE LOGIN</h1>
+      <h4>Login to view items in your wishlist.</h4>
+      <div fxLayout="column">
+        <button mat-stroked-button color="warn" [routerLink]="'/login'">
+          LOGIN
+        </button>
+      </div>
+    </div>
+  </div> -->
+
+<br>
+<!-- && dservice.isUserLoggedIn -->
+<div
+fxLayout="row row-wrap"
+fxLayoutAlign="start start"
+class="style"
+  *ngIf="dservice.wlJson?.length > 0 "
+>
+  <div fxLayout="column" *ngFor="let data of dservice.wlJson" class="subcontent">
+    <mat-card class="catcard">
+      <div class="img-wrap">
+        <img src="{{ data.imgurl }}" alt="Pics of imges" />
+      </div>
+      <mat-card-content>
+        <div fxLayout="row">
+          <div fxLayout="column">
+            <p class="m-16-08">{{ data.name | titlecase }}</p>
+
+            <p class="r-14">{{ data.description | titlecase }}</p>
+          </div>
+
+          <span style="flex: 1 1 auto"> </span>
+          <div fxLayout="column">
+            <h6>{{ data.amount | currency: "INR" }}</h6>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <button mat-button (click)="removeWishList(data)" class="heartsymbol" >
+            <mat-icon  >
+              delete</mat-icon
+            >
+          </button>
+          <span style="flex: 1 1 auto"></span>
+
+
+
+          <button
+            mat-icon-button
+            onclick="style='color:green'"
+            (click)="addTocart(data)"
+          >
+            <mat-icon class="material-symbols-outlined"
+              >shopping_bag</mat-icon
+            >
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+
+
+
+    <!-- <mat-card class="catcard">
+      <img  style=height:70%; mat-card-image src="{{ data.imgurl }}" alt="Pics of imges" /><br />
+
+      <mat-card-content>
+        <mat-divider></mat-divider><br />
+        <div fxLayout="row">
+          <div fxLayout="column">
+            <h1>
+              <b>{{ data.name | titlecase }}</b>
+            </h1>
+            <p>{{ data.description | titlecase }}</p>
+          </div>
+          <span style="flex: 1 1 auto"> </span>
+          <div fxLayout="column">
+            <h1>
+              <b>Rs: {{ data.amount }}</b>
+            </h1>
+
+            <div>
+              <section>
+                <button mat-button (click)="removeWishList(data)" class="heartsymbol" >
+                  <mat-icon  >
+                    delete</mat-icon
+                  >
+                </button>
+                <button mat-button (click)="addTocart(data)">
+                  <mat-icon> add_shopping_cart</mat-icon>
+                </button>
+              </section>
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card> -->
+  </div>
+
+</div>
+

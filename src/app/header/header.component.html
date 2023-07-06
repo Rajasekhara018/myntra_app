@@ -1,0 +1,116 @@
+<mat-toolbar fxLayoutGap="24px" class="toolbar">
+  <div fxLayout="column" (click)="goToLanding()">
+    <img
+      src="https://logos-download.com/wp-content/uploads/2016/09/Myntra_logo.png"
+      style="width: 200px"
+    />
+  </div>
+  <button mat-button [matMenuTriggerFor]="men" class="menustyle">
+    <h1>MEN</h1>
+  </button>
+  <mat-menu #men="matMenu" style="width: 20%">
+    <p style="color: red">CLOTHING</p>
+    <button mat-menu-item routerLink="/tshirts">T-shirts</button>
+    <button mat-menu-item routerLink="/shirts">Shirts</button>
+
+    <p style="color: red">FOOTWEAR</p>
+    <button mat-menu-item routerLink="/sportswear">Sports Wear</button>
+    <button mat-menu-item routerLink="/casualwear">Casual Wear</button>
+  </mat-menu>
+
+  <button mat-button class="menustyle" [matMenuTriggerFor]="women">
+    <h1>WOMEN</h1>
+  </button>
+  <mat-menu #women="matMenu">
+    <p style="color: red">CLOTHING</p>
+    <button mat-menu-item routerLink="/sarees">Sarees</button>
+    <button mat-menu-item routerLink="/kurtis">Kurtis</button>
+    <p style="color: red">FOOTWEAR</p>
+    <button mat-menu-item routerLink="/flats">Flats</button>
+    <button mat-menu-item routerLink="/heels">Heels</button>
+  </mat-menu>
+  <button mat-button class="menustyle" [matMenuTriggerFor]="kids">
+    <h4>KIDS</h4>
+  </button>
+  <mat-menu #kids="matMenu">
+    <p style="color: red">CLOTHING</p>
+    <button mat-menu-item routerLink="/frocks">frocks</button>
+    <button mat-menu-item routerLink="/jeens">Jeens</button>
+    <p style="color: red">FOOTWEAR</p>
+    <button mat-menu-item routerLink="/flipflops">flipflops</button>
+    <button mat-menu-item routerLink="/schoolshoe">schoolshoe</button>
+  </mat-menu>
+  <button mat-button class="menustyle" [matMenuTriggerFor]="home">
+    <h4>HOME&LIVING</h4>
+  </button>
+  <mat-menu #home="matMenu">
+    <p style="color: red">BRANDS</p>
+    <button mat-menu-item>interio</button>
+    <button mat-menu-item>century</button>
+    <p style="color: red">ITEMS</p>
+    <button mat-menu-item>sofa</button>
+    <button mat-menu-item>beds</button>
+  </mat-menu>
+  <button mat-button class="menustyle" [matMenuTriggerFor]="beauty">
+    <h4>BEAUTY</h4>
+  </button>
+  <mat-menu #beauty="matMenu">
+    <p style="color: red">BRANDS</p>
+    <button mat-menu-item>loreal</button>
+    <button mat-menu-item>covergirl</button>
+    <p style="color: red">ITEMS</p>
+    <button mat-menu-item>kajal</button>
+    <button mat-menu-item>foundation</button>
+  </mat-menu>
+  <div class="spacer"></div>
+  <mat-form-field
+    class="example-form-field"
+    appearance="fill"
+    style="width: 600px"
+  >
+    <input matInput type="text" #searchVal [(ngModel)]="dservice.searchText">
+    <button
+      mat-icon-button
+      matSuffix
+      aria-label="Clear"
+      (click)="onsearch1(searchVal.value)"
+    >
+      <mat-icon>search</mat-icon>
+    </button>
+  </mat-form-field>
+  <div>
+    <button mat-menu-item *ngIf="!dservice.isUserLoggedIn" routerLink="/login">
+      <b> LOGIN </b>
+      <mat-icon>login</mat-icon>
+    </button>
+
+    <button
+      mat-menu-item
+      *ngIf="dservice.isUserLoggedIn"
+      routerLink="/posts"
+      (click)="logout()"
+    >
+      <b> LOGOUT </b> <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+  <div>
+    <button mat-icon-button  (click)="showWishList()">
+      <mat-icon [matBadge]="dservice.wlCount" matBadgeColor="warn">
+        favorite_border
+      </mat-icon></button
+    ><br />
+    <span>wishlist</span>
+  </div>
+  <div>
+    <button mat-icon-button (click)="showCart()">
+      <mat-icon [matBadge]="dservice.cartCount" matBadgeColor="warn">
+        add_shopping_cart</mat-icon
+      >
+    </button>
+    <div>
+      <span>Bag</span>
+
+    </div>
+
+  </div>
+</mat-toolbar>

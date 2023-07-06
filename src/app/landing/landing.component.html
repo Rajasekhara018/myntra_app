@@ -1,0 +1,104 @@
+<mat-drawer-container>
+  <mat-drawer-content>
+    <div
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      style="width: 1000px"
+      *ngIf="dservice.searchArray?.length == 0 && !dservice.notFound"
+    >
+      <h1 class="errormsg">
+        <p>{{ dservice.searchArray?.length }}</p>
+        oops!....Search is not matching...<br />
+        <img
+          style="height: 100%"
+          src="data:image/png;base64,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"
+        />
+      </h1>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      *ngIf="!dservice.notFound"
+    >
+      <img
+        src="../../assets/banner.webp"
+
+        style="width: 80%; max-width: 100%; margin-top: 30px"
+      />
+
+      <!-- "../../assets/onlineshp-img.jpg" -->
+      <!-- src="https://st2.depositphotos.com/5501600/8921/i/950/depositphotos_89211356-stock-photo-online-shopping-banner-with-bags.jpg"  -->
+    </div>
+
+    <div>
+      <div
+        fxLayout="row row-wrap"
+        class="categoryContainer"
+        *ngIf="dservice.searchArray?.length > 0"
+      >
+        <div
+          fxLayout="column"
+          *ngFor="
+            let data of dservice.searchArray | search: dservice.searchText;
+            let i = index
+          "
+          class="subcontent"
+        >
+          <mat-card class="catcard">
+            <div class="img-wrap">
+              <img src="{{ data.imgurl }}" alt="Pics of imges" />
+            </div>
+            <mat-card-content>
+              <div fxLayout="row">
+                <div fxLayout="column">
+                  <p class="m-16-08">{{ data.name | titlecase }}</p>
+
+                  <p class="r-14">{{ data.description | titlecase }}</p>
+                </div>
+
+                <span style="flex: 1 1 auto"> </span>
+                <div fxLayout="column">
+                  <h6>{{ data.amount | currency: "INR" }}</h6>
+                </div>
+              </div>
+
+              <div fxLayout="row">
+                <button
+                  mat-icon-button
+                  *ngIf="!data.iswl"
+                  (click)="addToWishlist(data)"
+                >
+                  <mat-icon>favorite_border</mat-icon>
+                </button>
+                <span style="flex: 1 1 auto"></span>
+
+                <button
+                  mat-icon-button
+                  *ngIf="data.iswl"
+                  (click)="removeWishList(data)"
+                >
+                  <mat-icon color="accent">favorite</mat-icon>
+                </button>
+
+                <button
+                  mat-icon-button
+                  onclick="style='color:green'"
+                  (click)="addTocart(data)"
+                >
+                  <mat-icon class="material-symbols-outlined"
+                    >shopping_bag</mat-icon
+                  >
+                </button>
+              </div>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+      <br />
+      <mat-divider></mat-divider>
+      <br />
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>
+<router-outlet></router-outlet>

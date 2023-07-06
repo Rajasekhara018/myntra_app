@@ -1,0 +1,184 @@
+.example-container {
+  width: 100%;
+  height: 98%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.example-sidenav {
+  padding: 20px;
+  background-color: rgb(224, 228, 234);
+}
+.spacer{
+    flex: 1 1 auto;
+  }
+  .example-viewport {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+  }
+
+  .example-item {
+
+    height: 100px;
+  }
+
+
+
+
+
+
+.categoryContainer{
+margin: 80px;
+
+}
+.sStyle{
+  width: 500px;
+  height: 38px;
+
+}
+
+.subcontent{
+
+margin: 40px;
+width: 20%;
+
+}
+.catcard{
+
+
+  width:100%;
+  height: 460px;
+
+}
+.catcard img{
+height: 300px;
+max-width: 100%;
+width: 100%;
+}
+.heartsymbol{
+  color: pink;
+  cursor: pointer;
+}
+
+.cartTable{
+  width: 100%;
+}
+.cartTable tr td{
+  border: 1px solid #9e9e9e;
+  font-size: 18px;
+  padding: 32px;
+  text-transform: capitalize;
+}
+.style{
+  margin: 24px 64px;
+      padding: 56px;
+    margin: -21px;
+}
+.catcard{
+  margin: 32px;
+  height: 500px;
+  width: 330px;
+
+}
+.cartcardstyle{
+  width: 480%;
+    height: 359px;
+
+}
+.imgstyle{
+
+  width:30%;
+
+  margin-top: 5px;
+
+
+}
+.mat-card-image:first-child {
+  margin-top: 39px;
+  margin-left: 23%;
+
+}
+.mat-card-content {
+  font-size: 16px;
+  margin-left: 9%;
+}
+.example-section {
+  display: flex;
+  align-content: center;
+  align-items: center;
+  height: 60px;
+  padding-top: 172%;
+  padding-left: 36%;
+}
+.mat-select {
+  display: inline-block;
+  width: 18%;
+  outline: none;
+}
+.size{
+  width: 1757px;
+  padding-left: 0%;
+}
+.Amountalign{
+  text-align: end;
+    width: 98%;
+}
+.tablestyle{
+  width: 100%;
+
+}
+.tablestyle th{
+  font-size: 16px;
+
+}
+.tablestyle td{
+  font-size: 20px;
+
+}
+
+
+
+
+.order-summary table {
+ width: 100%;
+}
+.order-summary table td{
+  padding: 16px;
+  font-size: 20px;
+}
+.order-summary table td:last-child{
+  text-align: right;
+}
+.example-button-row {
+  display: table-cell;
+  width: 490px;
+}
+.porder{
+  width: 100%;
+    margin-top: 9%;
+}
+.giftcard{
+  background-color:rgb(254,241,236);
+  width: 133%;
+}
+.example-radio-group {
+  display: flex;
+  flex-direction: column;
+  margin: 24px 0;
+
+  align-items: flex-start;
+}
+
+.example-radio-button {
+  margin: 5px;
+
+}
+

@@ -1,0 +1,44 @@
+[
+  {
+    "Name": "Abc",
+    "Number": 1234,
+    "MobileNo": 123,
+    "status": "ACTIVE",
+    "date": "03/10/2022"
+  },
+  {
+    "Name": "Aahgfdh",
+    "Number": 3451,
+    "MobileNo": 456,
+    "status": "NEW",
+    "date": "03/10/2022"
+  },
+  {
+    "Name": "jfhgjf",
+    "Number": 1753,
+    "MobileNo": 7890,
+    "status": "CLOSED",
+    "date": "03/10/2022"
+  },
+  {
+    "Name": "jgsd",
+    "Number": 7645,
+    "MobileNo": 1203,
+    "status": "INACTIVE",
+    "date": "03/10/2022"
+  },
+  {
+    "Name": "dsfw",
+    "Number": 6543,
+    "MobileNo": 10789,
+    "status": "ACTIVE",
+    "date": "03/10/2022"
+  },
+  {
+    "Name": "Abwefsfw",
+    "Number": 9876,
+    "MobileNo": 1234567890,
+    "status": "CLOSED",
+    "date": "03/10/2022"
+  }
+]

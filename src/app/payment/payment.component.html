@@ -1,0 +1,533 @@
+<mat-card class="paymentCard mat-elevation-z4">
+  <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="16px">
+    <div style="width: 20%">
+      <img
+        style="height: 100%; width: 100%"
+        src="../../assets/myntra-img.jpg"
+      />
+    </div>
+
+    <p class="m-16-08" style="color: red">Make Secure payment</p>
+
+    <span class="spacer"></span>
+    <div fxLayout="column">
+      <button mat-icon-button>
+        <mat-icon (click)="backTOLanding()">close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="spc-16"></div>
+
+  <div
+    fxLayout="row"
+    fxLayoutGap="40px"
+    style="padding-left: 24px; padding-bottom: 8px"
+  >
+    <div fxLayout="column">
+      <p class="r-14 spc-4">Order Id</p>
+      <p class="m-16-08 spc-0">{{ RandId }}</p>
+    </div>
+    <div fxLayout="column">
+      <p class="r-14 spc-4">Amount</p>
+      <p class="m-16-08 spc-0">{{ ta | currency: "INR" }}</p>
+    </div>
+
+    <span class="spacer"></span>
+    <div fxLayout="column">
+      <div>
+        <img class="ssl-img" src="../../assets/SSL.jpg" />
+      </div>
+
+      <div>
+        <img class="toucan-img" src="https://toucanus.com/images/logo.svg " />
+      </div>
+    </div>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <mat-card-content class="paymentCard-content">
+    <mat-tab-group
+      mat-align-tabs="start"
+      color="accent"
+      *ngIf="page0"
+      (focusChange)="clickTab($event)"
+      [selectedIndex]="tabIndex"
+    >
+      <mat-tab aria-label="primary" label="Credit/Debit card">
+        <mat-card class="innerCard">
+          <mat-card-content>
+            <form
+              name="paymentform"
+              #paymentform="ngForm"
+              fxflex="colunm"
+              fxFlexAlign="center center"
+            >
+              <div fxLayout="column" fxLayoutGap="8px">
+                <mat-form-field appearance="outline">
+                  <mat-label>Card number</mat-label>
+
+                  <div fxLayout="row" fxLayoutAlign="end center">
+                    <input
+                      matInput
+                      type="text"
+                      (keydown)="keyPressNumbers($event)"
+                      name="cardno"
+                      minlength="16"
+                      maxlength="16"
+                      [(ngModel)]="addressObj.cardnumber"
+                      required
+                      placeholder="XXXX-XXXX-XXXX-XXXX"
+                      #cardno="ngModel"
+                      (change)="cardFormat(addressObj.cardnumber)"
+                      pattern="^[0-9]*$"
+                    />
+
+                    <img style="width: 40px" [src]="cardImg" />
+                  </div>
+                  <mat-error *ngIf="cardno.errors?.['required']"
+                    >Card number is required</mat-error
+                  >
+                  <mat-error *ngIf="cardno.errors?.['pattern']"
+                    >Enter a valid card number</mat-error
+                  >
+                </mat-form-field>
+                <div fxLayout="row" fxLayoutGap="24px">
+                  <div fxLayout="column" fxFlex="47">
+                    <mat-form-field appearance="outline">
+                      <mat-label appearence="outline">Valid Upto</mat-label>
+                      <input
+                        matInput
+                        matInput
+                        type="text"
+                        name="valid"
+                        placeholder="MM/YY"
+                        minlength="5"
+                        maxlength="5"
+                        [(ngModel)]="addressObj.validthru"
+                        required
+                        pattern="^(?:0?[1-9]|1[0-2]) *[/\/-] *[1-9][0-9]$"
+                        #valid="ngModel"
+                      />
+
+                      <mat-error *ngIf="valid.errors?.['required']"
+                        >Validity is required</mat-error
+                      >
+                      <mat-error *ngIf="valid .errors?.['pattern']"
+                        >Enter valid date</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                  <div fxLayout="column" fxFlex="47">
+                    <mat-form-field appearance="outline">
+                      <mat-label appearence="outline">CVV</mat-label>
+                      <input
+                        matInput
+                        type="text"
+                        (keydown)="keyPressNumbers($event)"
+                        name="cvv"
+                        placeholder="XXX"
+                        minlength="3"
+                        maxlength="3"
+                        [(ngModel)]="addressObj.cvvnumber"
+                        required
+                        pattern="^[0-9]{3}$"
+                        #cvv="ngModel"
+                        [type]="hide ? 'password' : 'text'"
+                      />
+                      <button
+                        mat-icon-button
+                        matSuffix
+                        (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide"
+                      >
+                        <mat-icon>{{
+                          hide ? "visibility_off" : "visibility"
+                        }}</mat-icon>
+                      </button>
+
+                      <mat-error *ngIf="cvv.errors?.['required']"
+                        >CVV is required</mat-error
+                      >
+                      <mat-error *ngIf="cvv .errors?.['pattern']"
+                        >Entervalid CVV</mat-error
+                      >
+                    </mat-form-field>
+                  </div>
+                </div>
+                <mat-form-field appearance="outline" style="width: 100%">
+                  <mat-label appearence="outline">username</mat-label>
+                  <input
+                    matInput
+                    matInput
+                    type="text"
+                    name="uname"
+                    [(ngModel)]="addressObj.username"
+                    required
+                    pattern="^[A-Za-z][A-Za-z0-9_]{7,29}$"
+                    #uname="ngModel"
+                  />
+                  <mat-error *ngIf="uname.errors?.['required']"
+                    >Name is required</mat-error
+                  >
+                  <mat-error *ngIf="uname.errors?.['pattern']"
+                    >Enter a valid name</mat-error
+                  >
+                </mat-form-field>
+                <div>&nbsp;</div>
+                <button
+                  mat-raised-button
+                  color="accent"
+                  (click)="payUsingCcDc()"
+                  [disabled]="paymentform.invalid"
+                >
+                  <mat-icon> lock </mat-icon>&nbsp;&nbsp; PAY
+                  {{ ta | currency: "INR" }}
+                </button>
+              </div>
+            </form>
+          </mat-card-content>
+        </mat-card>
+      </mat-tab>
+      <!-- ---------------------------------netbanking---------------------------------------------- -->
+
+      <mat-tab label="Netbanking">
+        <mat-card class="innerCard" *ngIf="!Netpage">
+          <div>
+            <div>
+              <mat-chip-list>
+                <mat-chip (click)="onClickMe('HDFC')">
+                  <img
+                    matChipAvatar
+                    src="../../assets/card-imges/hdfc-logo.jpg"
+                  />
+                  HDFC
+                </mat-chip>
+
+                <mat-chip (click)="onClickMe('SBI')">
+                  <img
+                    matChipAvatar
+                    src="../../assets/card-imges/sbi-logo.jpg"
+                  />
+                  SBI
+                </mat-chip>
+                <mat-chip (click)="onClickMe('ICICI')">
+                  <img
+                    matChipAvatar
+                    src="../../assets/card-imges/icici-logo.jpg"
+                  />
+                  ICICI
+                </mat-chip>
+              </mat-chip-list>
+
+              <mat-chip-list aria-label="">
+                <mat-chip (click)="onClickMe('AXIS')">
+                  <img matChipAvatar src="../../assets/card-imges/AXIS.jpg" />
+                  AXIS
+                </mat-chip>
+
+                <mat-chip (click)="onClickMe('KOTAK')">
+                  <img
+                    matChipAvatar
+                    src="../../assets/card-imges/kotak-logo.jpg"
+                  />
+                  KOTAK
+                </mat-chip>
+                <mat-chip (click)="onClickMe('PNB')">
+                  <img
+                    matChipAvatar
+                    src="../../assets/card-imges/pnb-logo.jpg"
+                  />
+                  PNB
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+
+            <div>&nbsp;</div>
+            <mat-card-content>
+              <div>
+                <form name="NbForm" #NbForm="ngForm">
+                  <mat-form-field appearance="outline" style="width: 100%">
+                    <mat-label>Search Banks</mat-label>
+                    <input
+                      matInput
+                      type="text"
+                      name="netId"
+                      [(ngModel)]="clickMessage"
+                      required
+                      #netId="ngModel"
+                    />
+                  </mat-form-field>
+                  <div>
+                    <div>&nbsp;</div>
+                    <button
+                      mat-raised-button
+                      color="accent"
+                      (click)="Netpage = true"
+                      [disabled]="NbForm.invalid"
+                      style="width: 100%"
+                    >
+                      <mat-icon> lock </mat-icon>CONTINUE{{
+                        ta | currency: "INR"
+                      }}
+                    </button>
+                  </div>
+                </form>
+              </div>
+            </mat-card-content>
+          </div>
+        </mat-card>
+
+        <mat-card>
+          <form
+            *ngIf="Netpage == true"
+            name="NetForm"
+            #NetForm="ngForm"
+            class="example-form"
+            fxflex="colunm"
+            fxFlexAlign="center center"
+          >
+            <mat-form-field appearance="outline" style="width: 100%">
+              <mat-label>Username</mat-label>
+              <input
+                matInput
+                type="text"
+                name="netUser"
+                [(ngModel)]="addressObj.username1"
+                required
+                #netUser="ngModel"
+              />
+            </mat-form-field>
+            <mat-form-field appearance="outline" style="width: 100%">
+              <mat-label>Password</mat-label>
+              <input
+                matInput
+                type="text"
+                name="netpassword"
+                [(ngModel)]="addressObj.password1"
+                required
+                #netpassword="ngModel"
+              />
+            </mat-form-field>
+
+            <div>
+              <button
+                mat-raised-button
+                type="submit"
+                color="accent"
+                style="width: 100%"
+                (click)="payUsingNetBanking()"
+                [disabled]="NetForm.invalid"
+                style="width: 100%"
+              >
+                <mat-icon> lock </mat-icon>PAY{{ ta | currency: "INR" }}
+              </button>
+            </div>
+          </form>
+        </mat-card>
+      </mat-tab>
+
+      <!-- (click)="proceedToPayNet(NbForm.value); NbForm.form.reset()" -->
+      <!-- -------------------------------------------upi--------------------------------------------- -->
+      <mat-tab label="UPI/BHIM">
+        <mat-card class="innerCard">
+          <div>
+            <form name="UPIIDForm" #UPIIDForm="ngForm">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <mat-label>UPI ID</mat-label>
+                <input
+                  matInput
+                  type="text"
+                  name="upiId"
+                  [(ngModel)]="addressObj.upinumber"
+                  required
+                  #upiId="ngModel"
+                  pattern="[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}"
+                />
+                <mat-error *ngIf="upiId.errors?.['required']"
+                  >UPI ID is required</mat-error
+                >
+                <mat-error *ngIf="upiId.errors?.['pattern']"
+                  >Enter a valid UPI ID</mat-error
+                >
+              </mat-form-field>
+            </form>
+            <div>&nbsp;</div>
+            <button
+              mat-raised-button
+              color="accent"
+              style="width: 100%"
+              (click)="
+                payUsingUpi(addressObj.upinumber); UPIIDForm.form.reset()
+              "
+              [disabled]="UPIIDForm.invalid"
+            >
+              <mat-icon> lock </mat-icon> PAY<b> {{ ta | currency: "INR" }}</b>
+            </button>
+          </div>
+        </mat-card>
+      </mat-tab>
+      <!-- -------------------------------------------------wallets------------------------------ -->
+      <mat-tab label="Wallets">
+        <mat-card class="innerCard" *ngIf="!Walletpage">
+          <div>
+            <mat-chip-list aria-label="">
+              <button (click)="onClickMe1('paytm')" mat-button style="border-radius: 50px">
+                <img
+                  style="height: 40px"
+                  src="../../assets/card-imges/paytm.jpg"
+                />
+              </button>
+
+              <button (click)="onClickMe1('phoneoe')" mat-button style="border-radius: 50px">
+                <img
+                  style="height: 40px"
+                  src="../../assets/card-imges/phonepe.jpg"
+                />
+              </button>
+              <button  (click)="onClickMe1('paytm')" mat-button style="border-radius: 50px">
+                <img
+                  style="height: 40px"
+                  src="../../assets/card-imges/gpay.jpg"
+                />
+              </button>
+            </mat-chip-list>
+
+            <div>&nbsp;</div>
+            <form name="wIDForm" #wIDForm="ngForm">
+              <mat-form-field appearance="outline" style="width: 100%">
+                <mat-label>WALLET ID</mat-label>
+                <input
+                  matInput
+                  matInput
+                  type="text"
+                  name="walletId"
+                  [(ngModel)]="clickMessage1"
+                  required
+                  #walletId="ngModel"
+                  pattern="[a-zA-Z0-9.\-_]{2,256}@[a-zA-Z]{2,64}"
+                />
+              </mat-form-field>
+              <div>&nbsp;</div>
+              <button
+                mat-raised-button
+                color="accent"
+                style="width: 100%"
+                (click)="Walletpage = true"
+                [disabled]="wIDForm.invalid"
+              >
+                <mat-icon> lock </mat-icon> PAY<b>
+                  {{ ta | currency: "INR" }}</b
+                >
+              </button>
+            </form>
+          </div>
+
+        </mat-card>
+        <mat-card>
+        <form
+          *ngIf="Walletpage == true"
+          name="walletForm"
+          #walletForm="ngForm"
+          class="example-form"
+          fxflex="colunm"
+          fxFlexAlign="center center"
+        >
+          <mat-form-field appearance="outline" style="width: 100%">
+            <mat-label>mobile number</mat-label>
+            <input
+              matInput
+              type="text"
+              name="walletUser"
+              [(ngModel)]="addressObj.mobilenumber1"
+              required
+              #walletUser="ngModel"
+            />
+          </mat-form-field>
+
+          <div>
+            <button
+              mat-raised-button
+              type="submit"
+              color="accent"
+              style="width: 100%"
+              (click)="payUsingWallet()"
+              [disabled]="walletForm.invalid"
+              style="width: 100%"
+            >
+              <mat-icon> lock </mat-icon>PAY{{ ta | currency: "INR" }}
+            </button>
+          </div>
+        </form>
+      </mat-card>
+      </mat-tab>
+    </mat-tab-group>
+  </mat-card-content>
+
+  <mat-error
+    class="warning-icon"
+    *ngIf="iscardValid"
+    fxLayoutAlign="center center"
+    style="padding-left: 200px"
+  >
+    <mat-icon style="width: 55px; padding-bottom: 96px">warning</mat-icon>
+
+    <p class="m-16-06" class="error-msg">
+      payment failed.Retry using different payment method.any money deducted
+      will be refund back
+    </p>
+  </mat-error>
+
+  <div class="page1" *ngIf="page1" style="padding: 40px; margin: 0 32px">
+    <div fxLayout="row" fxLayoutGap="24px">
+      <div fxLayout="column">
+        <mat-spinner diameter="32"></mat-spinner>
+      </div>
+      <div fxLayout="column">
+        <h6 class="spc-24">Processing payment securely...</h6>
+        <p class="r-14 spc-4">Do not press the back or refresh button</p>
+        <p class="r-14 spc-0">
+          Make sure you have a reliable internet connection
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="page2" *ngIf="page2" style="padding: 40px; margin: 0 32px">
+    <div fxLayout="row" fxLayoutGap="24px">
+      <div fxLayout="column">
+        <mat-icon>done</mat-icon>
+      </div>
+      <div fxLayout="column">
+        <h6 class="spc-24">Payment Successful...</h6>
+      </div>
+    </div>
+  </div>
+
+  <div
+    style="padding-top: 70px; position: fixed; bottom: 12px; right: 12px"
+    fxLayout="row"
+    fxLayoutAlign="start end"
+  >
+    <!-- <div>
+        <img
+          style="height: 41%; width: 11%"
+          src="../../assets/card-imges/master-footer.jpg"
+        />
+        <img
+          style="height: 50%; width: 11%"
+          src="../../assets/card-imges/visa-footer.jpg"
+        />
+        <img
+          style="height: 50%; width: 11%"
+          src="../../assets/card-imges/american-ex-footer.jpg"
+        />
+        <img
+          style="height: 50%; width: 12%"
+          src="../../assets/card-imges/rupay-footer.jpg"
+        />
+      </div> -->
+  </div>
+</mat-card>

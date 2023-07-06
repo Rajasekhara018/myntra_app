@@ -1,0 +1,118 @@
+@import "../../styles.scss";
+.paymentCard {
+  width: 640px;
+  height: 750px;
+  margin: 0 auto;
+  margin-top: 3%;
+  padding: 0;
+}
+.paymentCard-content {
+  padding: 40px 56px 16px 0px;
+}
+
+// .pay-btn{
+// padding: 10px 3px 3px 10px;
+// }
+
+mat-tab-group {
+  margin-bottom: 48px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+}
+
+:host ::ng-deep .mat-tab-body-wrapper {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mat-tab-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+::ng-deep .mat-tab-body-content {
+  height: auto !important;
+  padding: 2px;
+}
+
+:host ::ng-deep mat-ink-bar {
+  display: none;
+}
+
+::ng-deep .mat-tab-header {
+  margin-right: 20px !important;
+  // margin-top: 24px !important;
+  border-bottom: none !important;
+}
+
+:host ::ng-deep .mat-tab-labels {
+  flex-direction: column;
+}
+
+::ng-deep .mat-tab-label {
+  text-align: left !important;
+  justify-content: left !important;
+}
+:host ::ng-deep.mat-tab-label.mat-tab-label-active {
+  padding: 0 16px !important;
+  border-left: solid 2px orange;
+  color: rgba(0, 0, 0, 1) !important;
+  background-color: pink;
+}
+.img-logo {
+  margin-left: 270px;
+  margin-top: 12px;
+}
+.innerCard{
+  padding: 40px;
+  min-height: 380px;
+}
+.NetCard{
+
+  padding: 40px;
+  min-height: 380px;
+}
+.page1 {
+  background-color: #fff8c4;
+  padding: 40px;
+  padding-left: 20px;
+
+
+}
+.page2{
+  background-color: rgb(214, 242, 171);
+  padding: 40px;
+  padding-left: 20px;
+}
+// .page2 {
+//   background-color: rgb(214, 242, 171);
+//   padding: 40px;
+// }
+.active {
+  background-color: #f15381;
+}
+
+
+// .warning-icon {
+//   font-size: 37px;
+//   padding-top: 20px;
+//   width: 102px;
+//   height: 90px;
+//   padding-top: 45px;
+// }
+
+.ssl-img {
+  width: 100px;
+}
+.toucan-img {
+  width: 90px;
+}
+
+.error-msg{
+  position: relative;
+  bottom: 35px;
+  width: 285px;
+}

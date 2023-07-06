@@ -1,0 +1,225 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="card">
+  <mat-card fxLayoutAlign="center center" style="right: 752px">
+    <mat-card-content>
+      <mat-tab-group [tabIndex]="tabIndex">
+        <!-- *ngIf="screen ==0" -->
+
+        <mat-tab label="Signup">
+          <div>&nbsp;</div>
+          <div fxFlex="100" fxLayoutc="column" fxLayoutAlign="center center">
+            <form name="signUp" #signUp="ngForm">
+              <div>&nbsp;</div>
+              <div fxLayoutAlign="center center">
+                <mat-form-field appearance="outline">
+                  <mat-label>Mobilenumber</mat-label>
+                  <input
+                    matInput
+                    [(ngModel)]="loginObj.mobilenumber"
+                    type="text"
+                    name="mobilenumber"
+                    placeholder="required mobilenumber"
+                    required
+                    pattern="^\d{10,12}$"
+                    required
+                    #mobilenumber="ngModel"
+                  />
+                  <mat-icon matSuffix>phone</mat-icon>
+                  <mat-error *ngIf="mobilenumber.errors?.['required']"
+                    >Mobilenumber Required</mat-error
+                  >
+                  <mat-error *ngIf="mobilenumber.errors?.['pattern']"
+                    >invalid mobilenumber</mat-error
+                  >
+                </mat-form-field>
+              </div>
+              <div fxLayoutAlign="center center">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input
+                    [(ngModel)]="loginObj.email"
+                    matInput
+                    name="email"
+                    #email="ngModel"
+                    placeholder="Ex. pat@example.com"
+                    required
+                    pattern="[a-zA-z0-9]+@[a-zA-z]+\.[a-zA-z]{2,3}"
+                  />
+                  <mat-icon matSuffix>email</mat-icon>
+                  <mat-error *ngIf="email.errors?.['required']"
+                    >Entervalid email</mat-error
+                  >
+                  <mat-error *ngIf="email.errors?.['pattern']"
+                    >Email required*</mat-error
+                  >
+                </mat-form-field>
+              </div>
+              <div fxLayoutAlign="center center">
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input
+                    [(ngModel)]="loginObj.password"
+                    matInput
+                    type="text"
+                    name="password"
+                    #password="ngModel"
+                    placeholder="password required"
+                    required
+                    [type]="hide ? 'password' : 'text'"
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*?[@#$&*]).{8,12}$"
+                  />
+
+                  <mat-error *ngIf="password.errors?.['required']"
+                    >Entervalid password</mat-error
+                  >
+                  <mat-error *ngIf="password.errors?.['pattern']"
+                    >invalid password</mat-error
+                  >
+
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                  >
+                    <mat-icon>{{
+                      hide ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+              <div fxLayoutAlign="center center">
+                <mat-form-field appearance="outline">
+                  <mat-label>Confirm password </mat-label>
+                  <input
+                    [(ngModel)]="loginObj.confirmpassword"
+                    matInput
+                    type="text"
+                    name="confirmpassword"
+                    placeholder="password required"
+                    required
+                    #confirmpassword="ngModel"
+                    [type]="hide ? 'password' : 'text'"
+                  />
+                  <mat-error *ngIf="confirmpassword.errors?.['required']"
+                    >Enter valid password</mat-error
+                  >
+                  <mat-hint
+                    style="color: red"
+                    *ngIf="
+                      loginObj.confirmpassword != loginObj.password &&
+                      loginObj.confirmpassword
+                    "
+                  >
+                    password is not matched</mat-hint
+                  >
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                  >
+                    <mat-icon>{{
+                      hide ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+                </mat-form-field>
+              </div>
+              <div fxLayoutAlign="center center">
+                <button
+                  mat-raised-button
+                  color="accent"
+                  (click)="signUpUser(signUp.value)"
+                  [disabled]="
+                    signUp.form.invalid ||
+                    (loginObj.confirmpassword != loginObj.password &&
+                      loginObj.confirmpassword)
+                  "
+                >
+                  Signup
+                </button>
+              </div>
+            </form>
+          </div>
+        </mat-tab>
+        <!-- -------------------------Login------------------------------------------------- -->
+        <!-- *ngIf="screen==1" -->
+
+        <mat-tab label="Login">
+          <div>&nbsp;</div>
+          <form name="loginform" #loginform="ngForm">
+            <div fxLayout="column" fxLayoutAlign="center center">
+              <div fxLayoutAlign="center center">
+                <mat-form-field appearance="outline">
+                  <mat-label>Email</mat-label>
+                  <input
+                    matInput
+                    type="text"
+                    name="email"
+                    [(ngModel)]="useremail"
+                    required
+                    pattern="[a-zA-z0-9]+@[a-zA-z]+\.[a-zA-z]{2,3}"
+                    #email="ngModel"
+                  />
+                  <mat-icon matSuffix>email</mat-icon>
+                  <mat-error *ngIf="email.errors?.['required']"
+                    >entervalid email</mat-error
+                  >
+                  <mat-error *ngIf="email .errors?.['pattern']"
+                    >email required*</mat-error
+                  >
+                </mat-form-field>
+              </div>
+              <div fxLayoutAlign="center center">
+                <mat-form-field appearance="outline">
+                  <mat-label>Password</mat-label>
+                  <input
+                    [(ngModel)]="userpassword"
+                    matInput
+                    [type]="hide ? 'password' : 'text'"
+                    type="password"
+                    name="password"
+                    required
+                    pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*?[@#$&*]).{8,12}$"
+                    #password="ngModel"
+                  />
+                  <button
+                    mat-icon-button
+                    matSuffix
+                    (click)="hide = !hide"
+                    [attr.aria-label]="'Hide password'"
+                    [attr.aria-pressed]="hide"
+                  >
+                    <mat-icon>{{
+                      hide ? "visibility_off" : "visibility"
+                    }}</mat-icon>
+                  </button>
+
+                  <mat-error *ngIf="password.errors?.['required']"
+                    >entervalid password</mat-error
+                  >
+                  <mat-error *ngIf="password.errors?.['pattern']"
+                    >invalid password</mat-error
+                  >
+                </mat-form-field>
+              </div>
+              <div fxLayoutAlign="center center">
+                <button
+                  mat-raised-button
+                  color="accent"
+                  value="login"
+                  class="login-button"
+                  (click)="callLoginService(loginform.value)"
+                  [disabled]="loginform.form.invalid"
+                >
+                  Login
+                </button>
+              </div>
+            </div>
+          </form>
+        </mat-tab>
+      </mat-tab-group>
+    </mat-card-content>
+  </mat-card>
+</div>

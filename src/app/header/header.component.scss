@@ -1,0 +1,101 @@
+.example-container {
+  width: 100%;
+  height: 98%;
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.example-sidenav {
+  padding: 20px;
+  background-color: rgb(224, 228, 234);
+}
+.spacer{
+    flex: 1 1 auto;
+  }
+  .example-viewport {
+    height: 200px;
+    width: 200px;
+    border: 1px solid black;
+  }
+
+  .example-item {
+
+    height: 100px;
+  }
+
+.active{
+ background-color: blue;
+}
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+.example-full-width{
+
+  width: 540px;
+    padding-right: 81px;
+}
+
+
+.example-header-image {
+
+  background-size: cover;
+}
+.categoryContainer{
+margin: 80px;
+
+}
+.sStyle{
+  width: 500px;
+  height: 38px;
+
+}
+
+.subcontent{
+
+margin: 40px;
+width: 20%;
+
+}
+.catcard{
+
+  // margin: 40px;
+  width:100%;
+  height: 460px;
+
+}
+.catcard img{
+height: 300px;
+max-width: 100%;
+width: 100%;
+}
+.heartsymbol{
+  color: pink;
+  cursor: pointer;
+}
+.header{
+  height: 10%;
+}
+.errormsg{
+  width: auto;
+  padding: 10%;
+
+}
+.toolbar{
+  padding:0 56px ;
+  height: 10%;
+}
+
+.menustyle{
+  padding: 35px;
+  width: fit-content;
+}
+

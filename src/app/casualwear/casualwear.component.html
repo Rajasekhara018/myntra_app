@@ -1,0 +1,108 @@
+
+<div
+fxLayout="row row-wrap"
+fxLayoutAlign="start start"
+class="style"
+ *ngIf="dservice.searchArray?.length > 0 && !dservice.notFound"
+>
+ <div fxLayout="column" *ngFor="let data of filterCategory(siteData)|search:dservice.searchText;" class="subcontent">
+   <!-- <mat-card class="catcard">
+     <img  style=height:70%;  mat-card-image src="{{ data.imgurl }}" alt="Pics of imges" /><br />
+
+     <mat-card-content>
+       <mat-divider></mat-divider><br />
+       <div fxLayout="row">
+         <div fxLayout="column">
+           <h1>
+             <b>{{ data.name | titlecase }}</b>
+           </h1>
+           <p>{{ data.description | titlecase }}</p>
+         </div>
+         <span style="flex: 1 1 auto"> </span>
+         <div fxLayout="column">
+           <h1>
+             <b>Rs: {{ data.amount }}</b>
+           </h1>
+
+           <div>
+             <section>
+
+               <button
+                        mat-icon-button
+                        *ngIf="!data.iswl"
+                        (click)="addToWishlist(data)"
+                      >
+                        <mat-icon>favorite_border</mat-icon>
+                      </button>
+
+                      <button
+                        mat-icon-button
+                        *ngIf="data.iswl"
+                        (click)="removeWishList(data)"
+                      >
+                        <mat-icon color="accent">favorite</mat-icon>
+                      </button>
+               <button mat-button (click)="addTocart(data)">
+                 <mat-icon>
+
+                 add_shopping_cart</mat-icon
+                 >
+               </button>
+             </section>
+           </div>
+         </div>
+       </div>
+     </mat-card-content>
+   </mat-card> -->
+
+   <mat-card class="catcard">
+    <div class="img-wrap">
+      <img src="{{ data.imgurl }}" alt="Pics of imges" />
+    </div>
+    <mat-card-content>
+      <div fxLayout="row">
+        <div fxLayout="column">
+          <p class="m-16-08">{{ data.name | titlecase }}</p>
+
+          <p class="r-14">{{ data.description | titlecase }}</p>
+        </div>
+
+        <span style="flex: 1 1 auto"> </span>
+        <div fxLayout="column">
+          <h6>{{ data.amount | currency: "INR" }}</h6>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <button
+          mat-icon-button
+          *ngIf="!data.iswl"
+          (click)="addToWishlist(data)"
+        >
+          <mat-icon>favorite_border</mat-icon>
+        </button>
+        <span style="flex: 1 1 auto"></span>
+
+        <button
+          mat-icon-button
+          *ngIf="data.iswl"
+          (click)="removeWishList(data)"
+        >
+          <mat-icon color="accent">favorite</mat-icon>
+        </button>
+
+        <button
+          mat-icon-button
+          onclick="style='color:green'"
+          (click)="addTocart(data)"
+        >
+          <mat-icon class="material-symbols-outlined"
+            >shopping_bag</mat-icon
+          >
+        </button>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+
+  </div>
+</div>

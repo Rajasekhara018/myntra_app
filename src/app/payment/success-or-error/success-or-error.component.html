@@ -1,0 +1,30 @@
+<div class="page1" *ngIf="page4">
+  <div fxLayout="row">
+    <div fxLayout="column" fxLayoutAlign="start start">
+      <mat-card-title> processing payment securely..</mat-card-title>
+      <div>&nbsp;</div>
+      <mat-card-content>
+        <ul>
+          <li>Do not press the back or refresh button</li>
+          <li>Make sure you have a reliable internet connection</li>
+        </ul>
+        <mat-spinner
+          style="position: absolute; top: 15%; right: 5%"
+          diameter="50"
+        ></mat-spinner>
+      </mat-card-content>
+    </div>
+  </div>
+</div>
+
+<div class="page2" *ngIf="page5">
+  <div fxLayout="row" fxLayoutGap="64px">
+    <mat-card-title>
+      Payment of <b> {{ ta | currency: "INR" }}</b
+      >sucessfull..
+      <mat-icon>done</mat-icon>
+    </mat-card-title>
+  </div>
+
+  <div>&nbsp;</div>
+</div>

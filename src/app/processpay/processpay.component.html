@@ -1,0 +1,77 @@
+
+
+<div fxLayoutAlign="center center">
+  <mat-card style="width:40%;">
+    <div>
+      <mat-icon (click)="back()">
+        keyboard_backspace
+      </mat-icon>
+    </div>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <mat-card-content>
+        <mat-card-title fxLayoutAlign="center center">
+          <img
+            src="https://logos-download.com/wp-content/uploads/2016/09/Myntra_logo.png"
+            style="width: 200px"
+          />
+          FASHION
+        </mat-card-title>
+        <div fxLayout="row" fxLayoutAlign="center center">
+          <div fxLayout="column">
+            <mat-icon
+            fxLayoutGap="120px" class="icon">
+              check_circle_outline
+            </mat-icon>
+          </div>
+          <div fxLayout="column" fxLayoutGap="1px">
+            <h5>Payment Successfull</h5>
+            <p class= "r-14">Thank you,Your payment has been processed</p>
+          </div>
+          <div>&nbsp;</div>
+        </div>
+        <mat-divider></mat-divider>
+        <div>&nbsp;</div>
+        <div>&nbsp;</div>
+        <div  fxLayoutAlign="center center">
+          <p class="m-16-08"> {{ date | date: "medium" }}</p>
+        </div>
+        <p class="m-16-08" fxLayoutAlign="center center">{{ RandId }}</p >
+        <div fxLayout="row wrap" fxLayoutGap="500px">
+          <div fxLayout="column" fxLayoutGap="2px">
+            <p  class= "r-14" fxLayoutAlign="start">Invoice</p>
+            <p class="m-16-08">{{ invoiceno }}</p>
+          </div>
+
+          <div fxLayout="column" fxLayoutGap="2px">
+            <p class= "r-14">Transaction Amount</p>
+            <p class="m-16-08" fxLayoutAlign="end"> {{ ta | currency: "INR" }}</p>
+            <p></p>
+          </div>
+        </div>
+        <div fxLayout="row wrap" fxLayoutGap="465px">
+          <div fxLayout="column" fxLayoutGap="2px">
+            <p class= "r-14">Retrival reference</p>
+            <p class="m-16-08">{{ Rtrieval }}</p>
+          </div>
+          <div fxLayout="column" fxLayoutGap="2px">
+            <p class= "r-14">Transaction Id</p>
+            <p class="m-16-08" fxLayoutAlign="end">{{ RandId }}</p>
+            <p></p>
+          </div>
+        </div>
+
+        <div fxLayout="row wrap" fxLayoutGap="500px">
+          <div fxLayout="column" fxLayoutGap="2px">
+            <p class= "r-14" >Action code<p>
+            <p class="m-16-08" >{{ Actioncode }}</p>
+          </div>
+          <div fxLayout="column" fxLayoutGap="10px">
+            <p class= "r-14">Approval Code</p>
+            <p class="m-16-08" fxLayoutAlign="end"> APPROVE</p>
+            <p></p>
+          </div>
+        </div>
+      </mat-card-content>
+    </div>
+  </mat-card>
+</div>
